@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPI | עיצוב פנים</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Custom Styles -->
+    <style>
+        /* Use Assistant font for the entire page */
+        body {
+            font-family: 'Assistant', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Style for the hero section background */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Custom color palette based on user request */
+        .brand-teal { color: #2EC5B1; }
+        .bg-brand-teal { background-color: #2EC5B1; }
+        .border-brand-teal { border-color: #2EC5B1; }
+        .hover\:bg-brand-teal-dark:hover { background-color: #25a292; }
+
+        .brand-gold { color: #C8B59C; }
+        .bg-brand-gold { background-color: #C8B59C; }
+        .border-brand-gold { border-color: #C8B59C; }
+        .hover\:bg-brand-gold-dark:hover { background-color: #b3a089; }
+
+        /* Applying custom colors to Tailwind utilities */
+        .text-brand-gold {
+            color: #C8B59C;
+        }
+        .text-brand-teal {
+            color: #2EC5B1;
+        }
+        .focus\:ring-brand-teal:focus {
+            --tw-ring-color: #2EC5B1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="assets/images/logoT.png" alt="לוגו SPI" class="h-12 w-12 object-contain">
+                <span class="ml-4 mr-2 text-xl font-bold text-gray-700 hidden sm:block">SPI</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="#services" class="text-gray-600 hover:text-brand-teal transition duration-300">שירותים</a>
+                <a href="#about" class="text-gray-600 hover:text-brand-teal transition duration-300">אודות</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-brand-teal transition duration-300">תיק עבודות</a>
+                <a href="#contact" class="text-gray-600 hover:text-brand-teal transition duration-300">יצירת קשר</a>
+            </nav>
+            <a href="#contact" class="bg-brand-teal text-white py-2 px-5 rounded-full hover:bg-brand-teal-dark transition duration-300 font-semibold">
+                צרו קשר
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg text-white h-screen flex items-center justify-center text-center">
+            <div class="max-w-3xl px-4">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">שלמות היא הסטנדרט.</h1>
+                <p class="text-xl md:text-2xl mb-8" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">SPI | ליווי אישי בדרך לבית המושלם שלכם</p>
+                <a href="#contact" class="bg-brand-gold text-white py-3 px-8 rounded-full text-lg font-bold hover:bg-brand-gold-dark transition duration-300 shadow-lg">
+                    לשיחת ייעוץ ללא התחייבות
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4 text-brand-gold">השירותים שלי: פתרונות עיצוב בהתאמה אישית</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">כדי להבטיח תוצאה מושלמת, אני מציעה מגוון מסלולי שירות שמותאמים בדיוק לקצב, לתקציב ולחלום שלכם.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8 text-right">
+                    <!-- Service 1 -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-brand-teal">ליווי מלא וניהול פרויקט</h3>
+                        <p class="text-gray-700 mb-4">זהו מסלול הדגל, שמעניק לכם שקט נפשי מוחלט. מהגדרת הקונספט ועד הפרט האחרון בבית, אני מנהלת עבורכם את כל התהליך: תכניות עבודה מפורטות, בחירת חומרים וספקים, ופיקוח צמוד בשטח.</p>
+                        <p class="font-semibold text-brand-gold">למי זה מושלם?</p>
+                        <p class="text-gray-600">למי שרוצה להגשים את חלום העיצוב ללא כאבי ראש, לחסוך זמן יקר ולהיות בטוח בתוצאה הסופית.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-brand-teal">תכנון ועיצוב (ללא פיקוח)</h3>
+                        <p class="text-gray-700 mb-4">במסלול זה תקבלו את כל היסודות המקצועיים כדי לצאת לדרך בביטחון. ניפגש לאפיון וגיבוש קונספט עיצובי, ובסופו תקבלו ממני סט תכניות עבודה מלא ומפורט, שבעזרתו תוכלו לנהל את הפרויקט.</p>
+                        <p class="font-semibold text-brand-gold">למי זה מושלם?</p>
+                        <p class="text-gray-600">למי שיש לו את הזמן והרצון לנהל את הביצוע בשטח, וזקוק לחזון ולתכנון המקצועי כדי לעשות זאת נכון.</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-brand-teal">פגישת ייעוץ ממוקדת</h3>
+                        <p class="text-gray-700 mb-4">לפעמים כל מה שצריך זו דעה מקצועית כדי לקבל את ההחלטה הנכונה. בפגישה מרוכזת נוכל לפתור התלבטויות ספציפיות, לבחור צבעים וחומרים, לתכנן העמדת ריהוט נכונה או לקבל חוות דעת.</p>
+                        <p class="font-semibold text-brand-gold">למי זה מושלם?</p>
+                        <p class="text-gray-600">למי שזקוק לחיזוק מקצועי, הכוונה נקודתית או רעיונות חדשים כדי לרענן את הבית הקיים.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img src="assets/images/profile.jpg" alt="תמונה של שוש" class="rounded-full shadow-2xl w-full h-auto object-cover">
+                    </div>
+                    <div class="md:w-2/3 text-right">
+                        <h2 class="text-4xl font-bold mb-4 text-brand-gold">נעים להכיר, אני שוש</h2>
+                        <p class="text-lg text-gray-700 mb-4">אני מאמינה שלכל בית יש סיפור, והתפקיד שלי הוא לעזור לכם לספר אותו.</p>
+                        <p class="text-gray-600 mb-4">בית הוא הרי הרבה יותר מקירות ורהיטים; הוא הבמה לחיים שלכם, המקום שאליו חוזרים בסוף יום ארוך, והרקע לזיכרונות הכי יפים שלכם. לכן, אני קודם כל מקשיבה – כדי להבין את החלומות, הצרכים והסגנון שייחודי רק לכם.</p>
+                        <p class="text-gray-600 mb-4">הגישה שלי משלבת יצירתיות עם סדר וארגון ברזל. אני מנהלת כל פרויקט בדקדקנות, מקפידה על הפרטים הכי קטנים ועובדת רק עם אנשי המקצוע הטובים ביותר, כי אני מאמינה שאין קיצורי דרך בדרך לשלמות.</p>
+                        <p class="text-gray-800 font-semibold text-lg">או במילים אחרות, ועם קריצה? הכל אצלי פרפקט.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4 text-brand-gold">מחלומות למציאות: פרויקטים נבחרים</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">כל תמונה כאן היא סופו של מסע משותף ומרגש. מסע שהתחיל בחלום של לקוחות והפך, בעזרת תכנון קפדני ותשומת לב לפרטים, למציאות חיה והרמונית. אני מזמינה אתכם להתרשם ולדמיין את הסיפור שנוכל לספר יחד.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Gallery Images -->
+                    <img src="assets/images/FB_IMG_1685326732804.jpg" alt="פרויקט עיצוב סלון מודרני" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                    <img src="assets/images/IMG_2168_enhanced.JPG" alt="פרויקט לדוגמה 2" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                    <img src="assets/images/dining.png" alt="פרויקט לדוגמה 3" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                    <img src="assets/images/bedroom.jpg" alt="פרויקט לדוגמה 4" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                    <img src="assets/images/sink.jpg" alt="פרויקט לדוגמה 5" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                    <img src="assets/images/shower.JPG" alt="פרויקט לדוגמה 6" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-4xl font-bold mb-4 text-brand-gold">הדרך לבית המושלם שלכם: כך נעשה את זה יחד</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">אני מאמינה בשקיפות מלאה ובתהליך עבודה מסודר שמונע הפתעות ומבטיח שאתם תמיד בתמונה. המסע המשותף שלנו מורכב מארבעה שלבים מרכזיים:</p>
+                <div class="grid md:grid-cols-4 gap-8 text-right">
+                     <!-- Step 1 -->
+                    <div class="text-center p-4">
+                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">1</div>
+                        <h3 class="text-xl font-bold mb-2">פגישת היכרות וגיבוש חלום</h3>
+                        <p class="text-gray-600">בשיחה נעימה, על כוס קפה, נכיר לעומק. נגדיר תקציב, נתאם ציפיות ונתחיל לטוות את הסיפור של הבית החדש שלכם.</p>
+                    </div>
+                     <!-- Step 2 -->
+                    <div class="text-center p-4">
+                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">2</div>
+                        <h3 class="text-xl font-bold mb-2">שלב התכנון והעיצוב</h3>
+                        <p class="text-gray-600">כאן הקסם הופך לתוכנית עבודה מדויקת. אגבש קונספט עיצובי מלא עם לוחות השראה, תכניות עבודה והדמיות.</p>
+                    </div>
+                     <!-- Step 3 -->
+                    <div class="text-center p-4">
+                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">3</div>
+                        <h3 class="text-xl font-bold mb-2">ניהול וליווי הפרויקט</h3>
+                        <p class="text-gray-600">במסלול הליווי המלא, אני אהיה בשטח, אנהל את בעלי המקצוע ואוודא שהעבודה מתבצעת בסטנדרט הגבוה ביותר.</p>
+                    </div>
+                     <!-- Step 4 -->
+                    <div class="text-center p-4">
+                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">4</div>
+                        <h3 class="text-xl font-bold mb-2">מסירת המפתח</h3>
+                        <p class="text-gray-600">הרגע המרגש ביותר! בסיום הפרויקט, תצעדו אל תוך הבית המושלם שלכם, כשהוא מוכן ומעוצב עד הפרט האחרון.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4 text-brand-gold">הלקוחות של שוש מספרים</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">הסיפוק הגדול ביותר שלי הוא לראות לקוחות מאושרים בביתם החדש. הנה כמה מילים מהם:</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-right border-t-4 border-brand-teal">
+                        <p class="text-gray-700 italic mb-4">"הגענו לשוש מבולבלים ועם המון חששות, והיא פשוט הפכה את כל התהליך לחוויה. היא קלטה את הטעם שלנו מיד, ניהלה הכל ביד רמה ומקצועיות, והתוצאה הסופית... פשוט בית מושלם. ממליצים בחום!"</p>
+                        <p class="font-bold text-brand-teal">— משפחת כהן</p>
+                        <p class="text-gray-500">עיצוב פנטהאוז בהרצליה</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-right border-t-4 border-brand-teal">
+                        <p class="text-gray-700 italic mb-4">"[מקום להמלצה נוספת. כאן תוכלו להוסיף ציטוט מלקוח מרוצה נוסף, המתאר את החוויה והתוצאה הסופית של העבודה המשותפת.]"</p>
+                        <p class="font-bold text-brand-teal">— שם הלקוח/ה</p>
+                        <p class="text-gray-500">סוג הפרויקט והמיקום</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-200">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4 text-brand-gold">הצעד הראשון לבית המושלם שלכם מתחיל כאן.</h2>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">מוכנים להתחיל לספר את הסיפור שלכם? השאירו פרטים או צרו קשר ישירות, ואחזור אליכם לשיחת היכרות ראשונית, ללא כל התחייבות.</p>
+                
+                <!-- Contact Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                    <a href="tel:+972523327588" class="bg-brand-teal text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-teal-dark transition duration-300 flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        חייגו אליי
+                    </a>
+                    <a href="https://wa.me/972523327588" target="_blank" class="bg-brand-teal text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-teal-dark transition duration-300 flex items-center justify-center gap-2">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.75 13.96c.25.13.42.2.6.2.27 0 .5-.14.68-.42.18-.28.22-.6.1-.98-.03-.12-.06-.24-.1-.38-.2-.6-.5-1.15-.88-1.65-.3-.4-.64-.76-1-1.1-.37-.33-.7-.6-1-.82-.3-.22-.57-.4-1.13-.73-.25-.14-.5-.25-.76-.32-.26-.07-.5-.1-.7-.1-.2 0-.4.02-.6.05-.2.03-.4.1-.58.18-.18.08-.35.2-.5.3-.15.1-.3.25-.4.43-.1.18-.16.38-.18.6s0 .4.04.58c.05.18.1.35.18.5.08.15.2.3.3.42.1.13.2.24.32.36.12.12.23.23.35.34.1.1.2.2.3.3.2.2.4.4.6.6.2.2.4.4.6.58.2.18.38.35.55.5.17.15.33.3.5.42.17.13.32.24.48.34s.3.2.48.28c.18.08.35.15.53.2.18.05.35.1.53.1.2 0 .4-.02.6-.06.2-.04.4-.1.58-.2zM12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path></svg>
+                        דברו איתי בוואטסאפ
+                    </a>
+                    <a href="mailto:spi.big1@gmail.com" class="bg-brand-gold text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-gold-dark transition duration-300 flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        כתבו לי מייל
+                    </a>
+                </div>
+
+                <p class="text-gray-700 mb-4">או השאירו פרטים ואחזור אליכם:</p>
+
+                <!-- Contact Form -->
+                <form action="#" method="POST" class="max-w-xl mx-auto text-right">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                        <input type="text" name="full_name" placeholder="שם מלא" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                        <input type="tel" name="phone" placeholder="טלפון" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" name="email" placeholder="אימייל" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                    </div>
+                    <div class="mb-4">
+                        <textarea name="message" placeholder="ספרו לי בקצרה על מה חלמתם..." rows="4" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal"></textarea>
+                    </div>
+                    <button type="submit" class="bg-brand-teal text-white py-3 px-8 rounded-full text-lg font-bold hover:bg-brand-teal-dark transition duration-300 shadow-lg">
+                        דברו איתי
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2024 SPI. כל הזכויות שמורות.</p>
+            <p class="text-sm text-gray-400 mt-2">נבנה באהבה</p>
+        </div>
+    </footer>
+
+</body>
+</html>
