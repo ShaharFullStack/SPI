@@ -1,263 +1,947 @@
 <!DOCTYPE html>
+
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPI | עיצוב פנים</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
 
+```
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+<!-- Custom Styles -->
+<style>
+    /* Use Assistant font for the entire page */
+    body {
+        font-family: 'Assistant', sans-serif;
+        scroll-behavior: smooth;
+    }
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <!-- Custom Styles -->
-    <style>
-        /* Use Assistant font for the entire page */
-        body {
-            font-family: 'Assistant', sans-serif;
-            scroll-behavior: smooth;
-        }
-        /* Style for the hero section background */
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
+    /* Style for the hero section background */
+    .hero-bg {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    /* Enhanced Hero Section */
+    .hero-content {
+        animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-title {
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        animation: slideInRight 1s ease-out 0.3s both;
+    }
+
+    .hero-subtitle {
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        animation: slideInLeft 1s ease-out 0.6s both;
+    }
+
+    .hero-cta {
+        animation: fadeInUp 1s ease-out 0.9s both;
+    }
+
+    .cta-button {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .cta-button:hover::before {
+        left: 100%;
+    }
+
+    /* Floating Elements */
+    .floating-elements {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .floating-element {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border: 2px solid rgba(200, 181, 156, 0.3);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(1) {
+        top: 20%;
+        right: 20%;
+        animation-delay: 0s;
+        animation-duration: 8s;
+    }
+
+    .floating-element:nth-child(2) {
+        top: 60%;
+        left: 15%;
+        animation-delay: 2s;
+        animation-duration: 10s;
+    }
+
+    .floating-element:nth-child(3) {
+        bottom: 20%;
+        right: 10%;
+        animation-delay: 4s;
+        animation-duration: 7s;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(50px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Enhanced shadows */
+    .shadow-3xl {
+        box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Enhanced Service Cards */
+    .service-card {
+        position: relative;
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #2EC5B1, #C8B59C);
+        border-radius: 16px 16px 0 0;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+    }
+
+    /* Header improvements */
+    header {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Button enhancements */
+    .cta-button, 
+    .bg-brand-teal,
+    .bg-brand-gold {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Typography improvements */
+    h1, h2, h3 {
+        letter-spacing: -0.02em;
+    }
+
+    /* Contact section improvements */
+    #contact {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    /* Form styling improvements */
+    input, textarea {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #2EC5B1;
+        box-shadow: 0 0 0 3px rgba(46, 197, 177, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* Enhanced Portfolio Gallery */
+    .masonry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .masonry-item {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+    }
+
+    .masonry-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .masonry-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .masonry-item.tall {
+        grid-row: span 2;
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .masonry-item:hover .portfolio-image {
+        transform: scale(1.1);
+    }
+
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(46, 197, 177, 0.9), rgba(200, 181, 156, 0.8));
+        opacity: 0;
+        transition: all 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .masonry-item:hover .image-overlay {
+        opacity: 1;
+    }
+
+    .overlay-content {
+        transform: translateY(20px);
+        transition: transform 0.4s ease;
+    }
+
+    .masonry-item:hover .overlay-content {
+        transform: translateY(0);
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+    }
+
+    .lightbox-content {
+        position: relative;
+        margin: auto;
+        display: block;
+        width: 90%;
+        max-width: 900px;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: lightboxZoom 0.6s;
+    }
+
+    @keyframes lightboxZoom {
+        from { transform: translateY(-50%) scale(0); }
+        to { transform: translateY(-50%) scale(1); }
+    }
+
+    .lightbox-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .lightbox-close:hover {
+        color: #2EC5B1;
+    }
+
+    .lightbox-caption {
+        text-align: center;
+        color: white;
+        padding: 20px 0;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    /* Enhanced Testimonials */
+    .testimonial-card {
+        position: relative;
+        transform: translateY(0);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .testimonial-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #2EC5B1, #C8B59C);
+        border-radius: 16px 16px 0 0;
+    }
+
+    /* Process section improvements */
+    #process {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    /* Footer improvements */
+    footer {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    }
+    
+    /* Custom color palette based on user request */
+    .brand-teal { color: #2EC5B1; }
+    .bg-brand-teal { background-color: #2EC5B1; }
+    .border-brand-teal { border-color: #2EC5B1; }
+    .hover\:bg-brand-teal-dark:hover { background-color: #25a292; }
+
+    .brand-gold { color: #C8B59C; }
+    .bg-brand-gold { background-color: #C8B59C; }
+    .border-brand-gold { border-color: #C8B59C; }
+    .hover\:bg-brand-gold-dark:hover { background-color: #b3a089; }
+
+    /* Applying custom colors to Tailwind utilities */
+    .text-brand-gold {
+        color: #C8B59C;
+    }
+    .text-brand-teal {
+        color: #2EC5B1;
+    }
+    .focus\:ring-brand-teal:focus {
+        --tw-ring-color: #2EC5B1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .masonry-grid {
+            grid-template-columns: 1fr;
+            grid-gap: 15px;
         }
         
-        /* Custom color palette based on user request */
-        .brand-teal { color: #2EC5B1; }
-        .bg-brand-teal { background-color: #2EC5B1; }
-        .border-brand-teal { border-color: #2EC5B1; }
-        .hover\:bg-brand-teal-dark:hover { background-color: #25a292; }
+        .masonry-item.large {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        
+        .masonry-item.tall {
+            grid-row: span 1;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+        }
+        
+        .floating-element {
+            width: 40px;
+            height: 40px;
+        }
+    }
 
-        .brand-gold { color: #C8B59C; }
-        .bg-brand-gold { background-color: #C8B59C; }
-        .border-brand-gold { border-color: #C8B59C; }
-        .hover\:bg-brand-gold-dark:hover { background-color: #b3a089; }
+    @media (max-width: 640px) {
+        .masonry-item {
+            height: 250px;
+        }
+    }
+</style>
+```
 
-        /* Applying custom colors to Tailwind utilities */
-        .text-brand-gold {
-            color: #C8B59C;
-        }
-        .text-brand-teal {
-            color: #2EC5B1;
-        }
-        .focus\:ring-brand-teal:focus {
-            --tw-ring-color: #2EC5B1;
-        }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center">
-                <img src="assets/images/logoT.png" alt="לוגו SPI" class="h-12 w-12 object-contain">
-                <span class="ml-4 mr-2 text-xl font-bold text-gray-700 hidden sm:block">SPI</span>
-            </a>
-            <nav class="hidden md:flex space-x-8 space-x-reverse">
-                <a href="#services" class="text-gray-600 hover:text-brand-teal transition duration-300">שירותים</a>
-                <a href="#about" class="text-gray-600 hover:text-brand-teal transition duration-300">אודות</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-brand-teal transition duration-300">תיק עבודות</a>
-                <a href="#contact" class="text-gray-600 hover:text-brand-teal transition duration-300">יצירת קשר</a>
-            </nav>
-            <a href="#contact" class="bg-brand-teal text-white py-2 px-5 rounded-full hover:bg-brand-teal-dark transition duration-300 font-semibold">
-                צרו קשר
-            </a>
-        </div>
-    </header>
+```
+<!-- Header -->
+<header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" class="flex items-center">
+            <img src="assets/images/logoT.png" alt="לוגו SPI" class="h-12 w-12 object-contain">
+            <span class="ml-4 mr-2 text-xl font-bold text-gray-700 hidden sm:block">SPI</span>
+        </a>
+        <nav class="hidden md:flex space-x-8 space-x-reverse">
+            <a href="#services" class="text-gray-600 hover:text-brand-teal transition duration-300">שירותים</a>
+            <a href="#about" class="text-gray-600 hover:text-brand-teal transition duration-300">אודות</a>
+            <a href="#portfolio" class="text-gray-600 hover:text-brand-teal transition duration-300">תיק עבודות</a>
+            <a href="#contact" class="text-gray-600 hover:text-brand-teal transition duration-300">יצירת קשר</a>
+        </nav>
+        <a href="#contact" class="bg-brand-teal text-white py-2 px-5 rounded-full hover:bg-brand-teal-dark transition duration-300 font-semibold">
+            צרו קשר
+        </a>
+    </div>
+</header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-bg text-white h-screen flex items-center justify-center text-center">
-            <div class="max-w-3xl px-4">
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">שלמות היא הסטנדרט.</h1>
-                <p class="text-xl md:text-2xl mb-8" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">SPI | ליווי אישי בדרך לבית המושלם שלכם</p>
-                <a href="#contact" class="bg-brand-gold text-white py-3 px-8 rounded-full text-lg font-bold hover:bg-brand-gold-dark transition duration-300 shadow-lg">
-                    לשיחת ייעוץ ללא התחייבות
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white h-screen flex items-center justify-center text-center relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="max-w-4xl px-6 relative z-10">
+            <div class="hero-content">
+                <h1 class="hero-title text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    <span class="inline-block">שלמות היא</span>
+                    <span class="inline-block text-brand-gold">הסטנדרט.</span>
+                </h1>
+                <p class="hero-subtitle text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed">
+                    SPI | ליווי אישי בדרך לבית המושלם שלכם
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="cta-button bg-brand-gold text-white py-4 px-10 rounded-full text-lg font-bold hover:bg-brand-gold-dark transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 inline-flex items-center gap-3">
+                        <span>לשיחת ייעוץ ללא התחייבות</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-brand-gold">השירותים שלי: פתרונות עיצוב בהתאמה אישית</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">כדי להבטיח תוצאה מושלמת, אני מציעה מגוון מסלולי שירות שמותאמים בדיוק לקצב, לתקציב ולחלום שלכם.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 text-right">
+                <!-- Service 1 -->
+                <div class="service-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden border border-gray-100">
+                    <div class="service-icon absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal/80 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pt-6">
+                        <h3 class="text-2xl font-bold mb-4 text-brand-teal group-hover:text-brand-teal/80 transition-colors duration-300">ליווי מלא וניהול פרויקט</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">זהו מסלול הדגל, שמעניק לכם שקט נפשי מוחלט. מהגדרת הקונספט ועד הפרט האחרון בבית, אני מנהלת עבורכם את כל התהליך: תכניות עבודה מפורטות, בחירת חומרים וספקים, ופיקוח צמוד בשטח.</p>
+                        <div class="bg-gradient-to-r from-brand-gold/10 to-brand-gold/5 p-4 rounded-lg">
+                            <p class="font-semibold text-brand-gold mb-2">למי זה מושלם?</p>
+                            <p class="text-gray-600 text-sm">למי שרוצה להגשים את חלום העיצוב ללא כאבי ראש, לחסוך זמן יקר ולהיות בטוח בתוצאה הסופית.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden border border-gray-100">
+                    <div class="service-icon absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal/80 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <div class="pt-6">
+                        <h3 class="text-2xl font-bold mb-4 text-brand-teal group-hover:text-brand-teal/80 transition-colors duration-300">תכנון ועיצוב (ללא פיקוח)</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">במסלול זה תקבלו את כל היסודות המקצועיים כדי לצאת לדרך בביטחון. ניפגש לאפיון וגיבוש קונספט עיצובי, ובסופו תקבלו ממני סט תכניות עבודה מלא ומפורט, שבעזרתו תוכלו לנהל את הפרויקט.</p>
+                        <div class="bg-gradient-to-r from-brand-gold/10 to-brand-gold/5 p-4 rounded-lg">
+                            <p class="font-semibold text-brand-gold mb-2">למי זה מושלם?</p>
+                            <p class="text-gray-600 text-sm">למי שיש לו את הזמן והרצון לנהל את הביצוע בשטח, וזקוק לחזון ולתכנון המקצועי כדי לעשות זאת נכון.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden border border-gray-100">
+                    <div class="service-icon absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-brand-teal to-brand-teal/80 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <div class="pt-6">
+                        <h3 class="text-2xl font-bold mb-4 text-brand-teal group-hover:text-brand-teal/80 transition-colors duration-300">פגישת ייעוץ ממוקדת</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">לפעמים כל מה שצריך זו דעה מקצועית כדי לקבל את ההחלטה הנכונה. בפגישה מרוכזת נוכל לפתור התלבטויות ספציפיות, לבחור צבעים וחומרים, לתכנן העמדת ריהוט נכונה או לקבל חוות דעת.</p>
+                        <div class="bg-gradient-to-r from-brand-gold/10 to-brand-gold/5 p-4 rounded-lg">
+                            <p class="font-semibold text-brand-gold mb-2">למי זה מושלם?</p>
+                            <p class="text-gray-600 text-sm">למי שזקוק לחיזוק מקצועי, הכוונה נקודתית או רעיונות חדשים כדי לרענן את הבית הקיים.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-gray-100 to-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/3">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-teal/20 to-brand-gold/20 rounded-full transform rotate-6"></div>
+                        <div class="relative bg-white p-4 rounded-full shadow-2xl">
+                            <img src="assets/images/profile.jpg" alt="תמונה של שוש" class="rounded-full w-full h-auto object-cover">
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-brand-gold rounded-full opacity-60"></div>
+                        <div class="absolute -bottom-6 -left-6 w-12 h-12 border-4 border-brand-teal rounded-full opacity-40"></div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3 text-right">
+                    <div class="space-y-6">
+                        <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-brand-gold">נעים להכיר, אני שוש</h2>
+                        <div class="prose prose-lg max-w-none text-right">
+                            <p class="text-xl text-gray-700 font-medium leading-relaxed mb-6">אני מאמינה שלכל בית יש סיפור, והתפקיד שלי הוא לעזור לכם לספר אותו.</p>
+                            
+                            <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200 mb-6">
+                                <p class="text-gray-600 leading-relaxed">בית הוא הרי הרבה יותר מקירות ורהיטים; הוא הבמה לחיים שלכם, המקום שאליו חוזרים בסוף יום ארוך, והרקע לזיכרונות הכי יפים שלכם. לכן, אני קודם כל מקשיבה – כדי להבין את החלומות, הצרכים והסגנון שייחודי רק לכם.</p>
+                            </div>
+                            
+                            <div class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200 mb-6">
+                                <p class="text-gray-600 leading-relaxed">הגישה שלי משלבת יצירתיות עם סדר וארגון ברזל. אני מנהלת כל פרויקט בדקדקנות, מקפידה על הפרטים הכי קטנים ועובדת רק עם אנשי המקצוע הטובים ביותר, כי אני מאמינה שאין קיצורי דרך בדרך לשלמות.</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-brand-gold/10 to-brand-teal/10 p-6 rounded-2xl border-2 border-brand-gold/20">
+                                <p class="text-gray-800 font-bold text-xl leading-relaxed">או במילים אחרות, ועם קריצה? הכל אצלי פרפקט.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-brand-gold">מחלומות למציאות: פרויקטים נבחרים</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">כל תמונה כאן היא סופו של מסע משותף ומרגש. מסע שהתחיל בחלום של לקוחות והפך, בעזרת תכנון קפדני ותשומת לב לפרטים, למציאות חיה והרמונית. אני מזמינה אתכם להתרשם ולדמיין את הסיפור שנוכל לספר יחד.</p>
+            
+            <!-- Enhanced Gallery -->
+            <div class="masonry-grid">
+                <!-- Large Featured Image -->
+                <div class="masonry-item large cursor-pointer" onclick="openLightbox('assets/images/FB_IMG_1685326732804.jpg', 'סלון מודרני ויוקרתי')">
+                    <div class="image-container">
+                        <img src="assets/images/FB_IMG_1685326732804.jpg" alt="פרויקט עיצוב סלון מודרני" class="portfolio-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="text-white text-xl font-bold mb-2">סלון מודרני ויוקרתי</h3>
+                                <p class="text-white/90">עיצוב מינימליסטי עם נגיעות זהב</p>
+                                <div class="mt-4">
+                                    <span class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-sm">לחץ להצגה מורחבת</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Images -->
+                <div class="masonry-item cursor-pointer" onclick="openLightbox('assets/images/IMG_2168_enhanced.JPG', 'עיצוב מטבח יוקרתי')">
+                    <div class="image-container">
+                        <img src="assets/images/IMG_2168_enhanced.JPG" alt="עיצוב מטבח יוקרתי" class="portfolio-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="text-white text-lg font-bold">מטבח יוקרתי</h3>
+                                <p class="text-white/90 text-sm mt-1">פונקציונליות ויופי</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item cursor-pointer" onclick="openLightbox('assets/images/dining.png', 'פינת אוכל אלגנטית')">
+                    <div class="image-container">
+                        <img src="assets/images/dining.png" alt="פינת אוכל אלגנטית" class="portfolio-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="text-white text-lg font-bold">פינת אוכל אלגנטית</h3>
+                                <p class="text-white/90 text-sm mt-1">אירוח ברמה גבוהה</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item tall cursor-pointer" onclick="openLightbox('assets/images/bedroom.jpg', 'חדר שינה רומנטי')">
+                    <div class="image-container">
+                        <img src="assets/images/bedroom.jpg" alt="חדר שינה רומנטי" class="portfolio-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="text-white text-lg font-bold">חדר שינה רומנטי</h3>
+                                <p class="text-white/90 text-sm mt-1">נוחות ויוקרה</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item cursor-pointer" onclick="openLightbox('assets/images/sink.jpg', 'חדר רחצה מעוצב')">
+                    <div class="image-container">
+                        <img src="assets/images/sink.jpg" alt="חדר רחצה מעוצב" class="portfolio-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="text-white text-lg font-bold">חדר רחצה מעוצב</h3>
+                                <p class="text-white/90 text-sm mt-1">ספא ביתי</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item cursor-pointer" onclick="openLightbox('assets/images/shower.JPG', 'מקלחת יוקרתית')">
+                    <div class="image-container">
+                        <img src="assets/images/shower.JPG" alt="מקלחת יוקרתית" class="portfolio-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="text-white text-lg font-bold">מקלחת יוקרתית</h3>
+                                <p class="text-white/90 text-sm mt-1">חוויה מפנקת</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+             <h2 class="text-4xl font-bold mb-4 text-brand-gold">הדרך לבית המושלם שלכם: כך נעשה את זה יחד</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">אני מאמינה בשקיפות מלאה ובתהליך עבודה מסודר שמונע הפתעות ומבטיח שאתם תמיד בתמונה. המסע המשותף שלנו מורכב מארבעה שלבים מרכזיים:</p>
+            <div class="grid md:grid-cols-4 gap-8 text-right">
+                 <!-- Step 1 -->
+                <div class="text-center p-4">
+                    <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-2">פגישת היכרות וגיבוש חלום</h3>
+                    <p class="text-gray-600">בשיחה נעימה, על כוס קפה, נכיר לעומק. נגדיר תקציב, נתאם ציפיות ונתחיל לטוות את הסיפור של הבית החדש שלכם.</p>
+                </div>
+                 <!-- Step 2 -->
+                <div class="text-center p-4">
+                    <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-2">שלב התכנון והעיצוב</h3>
+                    <p class="text-gray-600">כאן הקסם הופך לתוכנית עבודה מדויקת. אגבש קונספט עיצובי מלא עם לוחות השראה, תכניות עבודה והדמיות.</p>
+                </div>
+                 <!-- Step 3 -->
+                <div class="text-center p-4">
+                    <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-2">ניהול וליווי הפרויקט</h3>
+                    <p class="text-gray-600">במסלול הליווי המלא, אני אהיה בשטח, אנהל את בעלי המקצוע ואוודא שהעבודה מתבצעת בסטנדרט הגבוה ביותר.</p>
+                </div>
+                 <!-- Step 4 -->
+                <div class="text-center p-4">
+                    <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">4</div>
+                    <h3 class="text-xl font-bold mb-2">מסירת המפתח</h3>
+                    <p class="text-gray-600">הרגע המרגש ביותר! בסיום הפרויקט, תצעדו אל תוך הבית המושלם שלכם, כשהוא מוכן ומעוצב עד הפרט האחרון.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-brand-teal/5 rounded-full"></div>
+        <div class="absolute bottom-10 right-10 w-48 h-48 bg-brand-gold/5 rounded-full"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-4 text-brand-gold">הלקוחות של שוש מספרים</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">הסיפוק הגדול ביותר שלי הוא לראות לקוחות מאושרים בביתם החדש. הנה כמה מילים מהם:</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                    <!-- Quote icon -->
+                    <div class="absolute top-6 left-6 text-brand-teal/20 group-hover:text-brand-teal/30 transition-colors duration-300">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 6.5 10zm11 0c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 17.5 10z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="pt-12 text-right">
+                        <p class="text-gray-700 italic mb-6 text-lg leading-relaxed font-medium">"הגענו לשוש מבולבלים ועם המון חששות, והיא פשוט הפכה את כל התהליך לחוויה. היא קלטה את הטעם שלנו מיד, ניהלה הכל ביד רמה ומקצועיות, והתוצאה הסופית... פשוט בית מושלם. ממליצים בחום!"</p>
+                        
+                        <div class="flex items-center justify-end gap-4">
+                            <div class="text-right">
+                                <p class="font-bold text-brand-teal text-lg">משפחת כהן</p>
+                                <p class="text-gray-500 text-sm">עיצוב פנטהאוז בהרצליה</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-brand-teal to-brand-gold rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">כ</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating stars -->
+                    <div class="flex justify-end mt-4 gap-1">
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-xl relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                    <!-- Quote icon -->
+                    <div class="absolute top-6 left-6 text-brand-gold/20 group-hover:text-brand-gold/30 transition-colors duration-300">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 6.5 10zm11 0c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 17.5 10z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="pt-12 text-right">
+                        <p class="text-gray-700 italic mb-6 text-lg leading-relaxed font-medium">"שוש הפכה את הדירה הישנה שלנו לבית חלומות. היא הצליחה להבין בדיוק מה אנחנו רוצים ואפילו הציעה פתרונות שלא חשבנו עליהם. העבודה הייתה מקצועית, מדויקת ובזמן. תוצאה מעל הציפיות!"</p>
+                        
+                        <div class="flex items-center justify-end gap-4">
+                            <div class="text-right">
+                                <p class="font-bold text-brand-teal text-lg">משפחת לוי</p>
+                                <p class="text-gray-500 text-sm">שיפוץ דירה בתל אביב</p>
+                            </div>
+                            <div class="w-12 h-12 bg-gradient-to-br from-brand-gold to-brand-teal rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-lg">ל</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating stars -->
+                    <div class="flex justify-end mt-4 gap-1">
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-brand-gold">הצעד הראשון לבית המושלם שלכם מתחיל כאן.</h2>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">מוכנים להתחיל לספר את הסיפור שלכם? השאירו פרטים או צרו קשר ישירות, ואחזור אליכם לשיחת היכרות ראשונית, ללא כל התחייבות.</p>
+            
+            <!-- Contact Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                <a href="tel:+972523327588" class="bg-brand-teal text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-teal-dark transition duration-300 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    חייגו אליי
+                </a>
+                <a href="https://wa.me/972523327588" target="_blank" class="bg-brand-teal text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-teal-dark transition duration-300 flex items-center justify-center gap-2">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.75 13.96c.25.13.42.2.6.2.27 0 .5-.14.68-.42.18-.28.22-.6.1-.98-.03-.12-.06-.24-.1-.38-.2-.6-.5-1.15-.88-1.65-.3-.4-.64-.76-1-1.1-.37-.33-.7-.6-1-.82-.3-.22-.57-.4-1.13-.73-.25-.14-.5-.25-.76-.32-.26-.07-.5-.1-.7-.1-.2 0-.4.02-.6.05-.2.03-.4.1-.58.18-.18.08-.35.2-.5.3-.15.1-.3.25-.4.43-.1.18-.16.38-.18.6s0 .4.04.58c.05.18.1.35.18.5.08.15.2.3.3.42.1.13.2.24.32.36.12.12.23.23.35.34.1.1.2.2.3.3.2.2.4.4.6.6.2.2.4.4.6.58.2.18.38.35.55.5.17.15.33.3.5.42.17.13.32.24.48.34s.3.2.48.28c.18.08.35.15.53.2.18.05.35.1.53.1.2 0 .4-.02.6-.06.2-.04.4-.1.58-.2zM12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path></svg>
+                    דברו איתי בוואטסאפ
+                </a>
+                <a href="mailto:spi.big1@gmail.com" class="bg-brand-gold text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-gold-dark transition duration-300 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    כתבו לי מייל
                 </a>
             </div>
-        </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 text-brand-gold">השירותים שלי: פתרונות עיצוב בהתאמה אישית</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">כדי להבטיח תוצאה מושלמת, אני מציעה מגוון מסלולי שירות שמותאמים בדיוק לקצב, לתקציב ולחלום שלכם.</p>
-                
-                <div class="grid md:grid-cols-3 gap-8 text-right">
-                    <!-- Service 1 -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold mb-4 text-brand-teal">ליווי מלא וניהול פרויקט</h3>
-                        <p class="text-gray-700 mb-4">זהו מסלול הדגל, שמעניק לכם שקט נפשי מוחלט. מהגדרת הקונספט ועד הפרט האחרון בבית, אני מנהלת עבורכם את כל התהליך: תכניות עבודה מפורטות, בחירת חומרים וספקים, ופיקוח צמוד בשטח.</p>
-                        <p class="font-semibold text-brand-gold">למי זה מושלם?</p>
-                        <p class="text-gray-600">למי שרוצה להגשים את חלום העיצוב ללא כאבי ראש, לחסוך זמן יקר ולהיות בטוח בתוצאה הסופית.</p>
-                    </div>
-                    <!-- Service 2 -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold mb-4 text-brand-teal">תכנון ועיצוב (ללא פיקוח)</h3>
-                        <p class="text-gray-700 mb-4">במסלול זה תקבלו את כל היסודות המקצועיים כדי לצאת לדרך בביטחון. ניפגש לאפיון וגיבוש קונספט עיצובי, ובסופו תקבלו ממני סט תכניות עבודה מלא ומפורט, שבעזרתו תוכלו לנהל את הפרויקט.</p>
-                        <p class="font-semibold text-brand-gold">למי זה מושלם?</p>
-                        <p class="text-gray-600">למי שיש לו את הזמן והרצון לנהל את הביצוע בשטח, וזקוק לחזון ולתכנון המקצועי כדי לעשות זאת נכון.</p>
-                    </div>
-                    <!-- Service 3 -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold mb-4 text-brand-teal">פגישת ייעוץ ממוקדת</h3>
-                        <p class="text-gray-700 mb-4">לפעמים כל מה שצריך זו דעה מקצועית כדי לקבל את ההחלטה הנכונה. בפגישה מרוכזת נוכל לפתור התלבטויות ספציפיות, לבחור צבעים וחומרים, לתכנן העמדת ריהוט נכונה או לקבל חוות דעת.</p>
-                        <p class="font-semibold text-brand-gold">למי זה מושלם?</p>
-                        <p class="text-gray-600">למי שזקוק לחיזוק מקצועי, הכוונה נקודתית או רעיונות חדשים כדי לרענן את הבית הקיים.</p>
-                    </div>
+            <p class="text-gray-700 mb-4">או השאירו פרטים ואחזור אליכם:</p>
+
+            <!-- Contact Form -->
+            <form action="#" method="POST" class="max-w-xl mx-auto text-right">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <input type="text" name="full_name" placeholder="שם מלא" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                    <input type="tel" name="phone" placeholder="טלפון" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
                 </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3">
-                        <img src="assets/images/profile.jpg" alt="תמונה של שוש" class="rounded-full shadow-2xl w-full h-auto object-cover">
-                    </div>
-                    <div class="md:w-2/3 text-right">
-                        <h2 class="text-4xl font-bold mb-4 text-brand-gold">נעים להכיר, אני שוש</h2>
-                        <p class="text-lg text-gray-700 mb-4">אני מאמינה שלכל בית יש סיפור, והתפקיד שלי הוא לעזור לכם לספר אותו.</p>
-                        <p class="text-gray-600 mb-4">בית הוא הרי הרבה יותר מקירות ורהיטים; הוא הבמה לחיים שלכם, המקום שאליו חוזרים בסוף יום ארוך, והרקע לזיכרונות הכי יפים שלכם. לכן, אני קודם כל מקשיבה – כדי להבין את החלומות, הצרכים והסגנון שייחודי רק לכם.</p>
-                        <p class="text-gray-600 mb-4">הגישה שלי משלבת יצירתיות עם סדר וארגון ברזל. אני מנהלת כל פרויקט בדקדקנות, מקפידה על הפרטים הכי קטנים ועובדת רק עם אנשי המקצוע הטובים ביותר, כי אני מאמינה שאין קיצורי דרך בדרך לשלמות.</p>
-                        <p class="text-gray-800 font-semibold text-lg">או במילים אחרות, ועם קריצה? הכל אצלי פרפקט.</p>
-                    </div>
+                <div class="mb-4">
+                    <input type="email" name="email" placeholder="אימייל" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
                 </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 text-brand-gold">מחלומות למציאות: פרויקטים נבחרים</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">כל תמונה כאן היא סופו של מסע משותף ומרגש. מסע שהתחיל בחלום של לקוחות והפך, בעזרת תכנון קפדני ותשומת לב לפרטים, למציאות חיה והרמונית. אני מזמינה אתכם להתרשם ולדמיין את הסיפור שנוכל לספר יחד.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Gallery Images -->
-                    <img src="assets/images/FB_IMG_1685326732804.jpg" alt="פרויקט עיצוב סלון מודרני" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
-                    <img src="assets/images/IMG_2168_enhanced.JPG" alt="פרויקט לדוגמה 2" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
-                    <img src="assets/images/dining.png" alt="פרויקט לדוגמה 3" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
-                    <img src="assets/images/bedroom.jpg" alt="פרויקט לדוגמה 4" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
-                    <img src="assets/images/sink.jpg" alt="פרויקט לדוגמה 5" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
-                    <img src="assets/images/shower.JPG" alt="פרויקט לדוגמה 6" class="rounded-lg shadow-md hover:opacity-90 transition-opacity duration-300 w-full h-64 object-cover">
+                <div class="mb-4">
+                    <textarea name="message" placeholder="ספרו לי בקצרה על מה חלמתם..." rows="4" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal"></textarea>
                 </div>
-            </div>
-        </section>
-
-        <!-- Process Section -->
-        <section id="process" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-4xl font-bold mb-4 text-brand-gold">הדרך לבית המושלם שלכם: כך נעשה את זה יחד</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">אני מאמינה בשקיפות מלאה ובתהליך עבודה מסודר שמונע הפתעות ומבטיח שאתם תמיד בתמונה. המסע המשותף שלנו מורכב מארבעה שלבים מרכזיים:</p>
-                <div class="grid md:grid-cols-4 gap-8 text-right">
-                     <!-- Step 1 -->
-                    <div class="text-center p-4">
-                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">1</div>
-                        <h3 class="text-xl font-bold mb-2">פגישת היכרות וגיבוש חלום</h3>
-                        <p class="text-gray-600">בשיחה נעימה, על כוס קפה, נכיר לעומק. נגדיר תקציב, נתאם ציפיות ונתחיל לטוות את הסיפור של הבית החדש שלכם.</p>
-                    </div>
-                     <!-- Step 2 -->
-                    <div class="text-center p-4">
-                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">2</div>
-                        <h3 class="text-xl font-bold mb-2">שלב התכנון והעיצוב</h3>
-                        <p class="text-gray-600">כאן הקסם הופך לתוכנית עבודה מדויקת. אגבש קונספט עיצובי מלא עם לוחות השראה, תכניות עבודה והדמיות.</p>
-                    </div>
-                     <!-- Step 3 -->
-                    <div class="text-center p-4">
-                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">3</div>
-                        <h3 class="text-xl font-bold mb-2">ניהול וליווי הפרויקט</h3>
-                        <p class="text-gray-600">במסלול הליווי המלא, אני אהיה בשטח, אנהל את בעלי המקצוע ואוודא שהעבודה מתבצעת בסטנדרט הגבוה ביותר.</p>
-                    </div>
-                     <!-- Step 4 -->
-                    <div class="text-center p-4">
-                        <div class="bg-brand-teal text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">4</div>
-                        <h3 class="text-xl font-bold mb-2">מסירת המפתח</h3>
-                        <p class="text-gray-600">הרגע המרגש ביותר! בסיום הפרויקט, תצעדו אל תוך הבית המושלם שלכם, כשהוא מוכן ומעוצב עד הפרט האחרון.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 text-brand-gold">הלקוחות של שוש מספרים</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">הסיפוק הגדול ביותר שלי הוא לראות לקוחות מאושרים בביתם החדש. הנה כמה מילים מהם:</p>
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Testimonial 1 -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-right border-t-4 border-brand-teal">
-                        <p class="text-gray-700 italic mb-4">"הגענו לשוש מבולבלים ועם המון חששות, והיא פשוט הפכה את כל התהליך לחוויה. היא קלטה את הטעם שלנו מיד, ניהלה הכל ביד רמה ומקצועיות, והתוצאה הסופית... פשוט בית מושלם. ממליצים בחום!"</p>
-                        <p class="font-bold text-brand-teal">— משפחת כהן</p>
-                        <p class="text-gray-500">עיצוב פנטהאוז בהרצליה</p>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-right border-t-4 border-brand-teal">
-                        <p class="text-gray-700 italic mb-4">"[מקום להמלצה נוספת. כאן תוכלו להוסיף ציטוט מלקוח מרוצה נוסף, המתאר את החוויה והתוצאה הסופית של העבודה המשותפת.]"</p>
-                        <p class="font-bold text-brand-teal">— שם הלקוח/ה</p>
-                        <p class="text-gray-500">סוג הפרויקט והמיקום</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-200">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 text-brand-gold">הצעד הראשון לבית המושלם שלכם מתחיל כאן.</h2>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">מוכנים להתחיל לספר את הסיפור שלכם? השאירו פרטים או צרו קשר ישירות, ואחזור אליכם לשיחת היכרות ראשונית, ללא כל התחייבות.</p>
-                
-                <!-- Contact Buttons -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                    <a href="tel:+972523327588" class="bg-brand-teal text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-teal-dark transition duration-300 flex items-center justify-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        חייגו אליי
-                    </a>
-                    <a href="https://wa.me/972523327588" target="_blank" class="bg-brand-teal text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-teal-dark transition duration-300 flex items-center justify-center gap-2">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.75 13.96c.25.13.42.2.6.2.27 0 .5-.14.68-.42.18-.28.22-.6.1-.98-.03-.12-.06-.24-.1-.38-.2-.6-.5-1.15-.88-1.65-.3-.4-.64-.76-1-1.1-.37-.33-.7-.6-1-.82-.3-.22-.57-.4-1.13-.73-.25-.14-.5-.25-.76-.32-.26-.07-.5-.1-.7-.1-.2 0-.4.02-.6.05-.2.03-.4.1-.58.18-.18.08-.35.2-.5.3-.15.1-.3.25-.4.43-.1.18-.16.38-.18.6s0 .4.04.58c.05.18.1.35.18.5.08.15.2.3.3.42.1.13.2.24.32.36.12.12.23.23.35.34.1.1.2.2.3.3.2.2.4.4.6.6.2.2.4.4.6.58.2.18.38.35.55.5.17.15.33.3.5.42.17.13.32.24.48.34s.3.2.48.28c.18.08.35.15.53.2.18.05.35.1.53.1.2 0 .4-.02.6-.06.2-.04.4-.1.58-.2zM12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path></svg>
-                        דברו איתי בוואטסאפ
-                    </a>
-                    <a href="mailto:spi.big1@gmail.com" class="bg-brand-gold text-white py-3 px-6 rounded-full font-semibold text-lg hover:bg-brand-gold-dark transition duration-300 flex items-center justify-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        כתבו לי מייל
-                    </a>
-                </div>
-
-                <p class="text-gray-700 mb-4">או השאירו פרטים ואחזור אליכם:</p>
-
-                <!-- Contact Form -->
-                <form action="#" method="POST" class="max-w-xl mx-auto text-right">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                        <input type="text" name="full_name" placeholder="שם מלא" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
-                        <input type="tel" name="phone" placeholder="טלפון" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
-                    </div>
-                    <div class="mb-4">
-                        <input type="email" name="email" placeholder="אימייל" required class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal">
-                    </div>
-                    <div class="mb-4">
-                        <textarea name="message" placeholder="ספרו לי בקצרה על מה חלמתם..." rows="4" class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-teal"></textarea>
-                    </div>
-                    <button type="submit" class="bg-brand-teal text-white py-3 px-8 rounded-full text-lg font-bold hover:bg-brand-teal-dark transition duration-300 shadow-lg">
-                        דברו איתי
-                    </button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center">
-        <div class="container mx-auto px-6">
-            <p>&copy; 2024 SPI. כל הזכויות שמורות.</p>
-            <p class="text-sm text-gray-400 mt-2">נבנה באהבה</p>
+                <button type="submit" class="bg-brand-teal text-white py-3 px-8 rounded-full text-lg font-bold hover:bg-brand-teal-dark transition duration-300 shadow-lg">
+                    דברו איתי
+                </button>
+            </form>
         </div>
-    </footer>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-6 text-center">
+    <div class="container mx-auto px-6">
+        <p>&copy; 2024 SPI. כל הזכויות שמורות.</p>
+        <p class="text-sm text-gray-400 mt-2">נבנה באהבה</p>
+    </div>
+</footer>
+
+<!-- JavaScript for Lightbox and Smooth Animations -->
+<script>
+    // Lightbox functionality
+    function openLightbox(imageSrc, caption) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        
+        lightboxImage.src = imageSrc;
+        lightboxCaption.textContent = caption;
+        lightbox.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add entrance animations on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe portfolio items for animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const portfolioItems = document.querySelectorAll('.masonry-item');
+        portfolioItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(item);
+        });
+    });
+
+    // Form handling (placeholder - replace with actual form submission logic)
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('תודה על ההודעה! אחזור אליכם בהקדם האפשרי.');
+    });
+</script>
+```
 
 </body>
 </html>
