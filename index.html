@@ -1387,7 +1387,7 @@
           class="container mx-auto px-6 flex justify-center items-center min-h-[300px] relative z-10"
         >
           <div
-            class="bg-gradient-to-br backdrop-blur-sm from-brand-gold/10 to-brand-teal/10 rounded-3xl shadow-3xl border-2 border-brand-gold/20 p-10 max-w-xl w-full text-center flex flex-col items-center gap-6 animate-fadeInUp"
+            class="bg-gradient-to-br backdrop-blur-sm from-brand-gold/10 to-brand-teal/10 rounded-3xl shadow-3xl border-2 border-brand-gold/20 p-10 max-w-2xl w-full text-center flex flex-col items-center gap-6 animate-fadeInUp"
           >
             <div class="flex flex-col items-center gap-2">
               <h2 class="text-5xl font-bold text-brand-gold">צרו קשר</h2>
@@ -1396,22 +1396,102 @@
               </p>
             </div>
 
-            <div class="flex flex-col gap-4 w-full">
-              <a
-                href="mailto:spi.big1@gmail.com?subject=פנייה לעיצוב פנים"
-                class="flex items-center gap-3 bg-brand-teal hover:bg-brand-gold text-white hover:text-brand-teal hover:scale-105 font-bold py-3 px-8 rounded-full text-xl shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-teal/40 justify-center"
-              >
-                <span>שלחו הודעה במייל</span>
-              </a>
+            <!-- Contact Form -->
+            <form
+              action="https://formspree.io/f/xvgbzogq"
+              method="POST"
+              class="w-full space-y-4 text-right"
+            >
+              <div>
+                <label for="name" class="block text-brand-gold text-lg font-semibold mb-2">שם מלא</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full p-3 rounded-lg border-2 border-brand-teal/30 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/40 transition-all duration-300"
+                  placeholder="הכניסו את השם שלכם"
+                />
+              </div>
 
-              <a
-                href="https://wa.me/+972523327588?text=שלום שוש, אני מעוניין בשירותי עיצוב פנים"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-3 hover:border-brand-gold border-2 border-brand-teal bg-brand-teal text-white hover:scale-105 hover:text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-gold/40 justify-center"
+              <div>
+                <label for="email" class="block text-brand-gold text-lg font-semibold mb-2">אימייל</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full p-3 rounded-lg border-2 border-brand-teal/30 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/40 transition-all duration-300"
+                  placeholder="הכניסו את האימייל שלכם"
+                />
+              </div>
+
+              <div>
+                <label for="phone" class="block text-brand-gold text-lg font-semibold mb-2">טלפון</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="w-full p-3 rounded-lg border-2 border-brand-teal/30 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/40 transition-all duration-300"
+                  placeholder="הכניסו את מספר הטלפון שלכם"
+                />
+              </div>
+
+              <div>
+                <label for="project-type" class="block text-brand-gold text-lg font-semibold mb-2">סוג הפרויקט</label>
+                <select
+                  id="project-type"
+                  name="project-type"
+                  class="w-full p-3 rounded-lg border-2 border-brand-teal/30 bg-white/90 text-gray-900 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/40 transition-all duration-300"
+                >
+                  <option value="">בחרו סוג פרויקט</option>
+                  <option value="full-project">ליווי מלא וניהול פרויקט</option>
+                  <option value="design-planning">תכנון ועיצוב</option>
+                  <option value="consultation">פגישת ייעוץ ממוקדת</option>
+                  <option value="other">אחר</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-brand-gold text-lg font-semibold mb-2">הודעה</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full p-3 rounded-lg border-2 border-brand-teal/30 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/40 transition-all duration-300 resize-none"
+                  placeholder="ספרו לי על הפרויקט שלכם..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-brand-teal hover:bg-brand-gold text-white hover:text-brand-teal font-bold py-4 px-8 rounded-full text-xl shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-teal/40 hover:scale-105 transform"
               >
-                <span>שלחו הודעה בוואטסאפ</span>
-              </a>
+                שליחת הודעה
+              </button>
+            </form>
+
+            <div class="flex flex-col gap-4 w-full border-t border-brand-gold/30 pt-6">
+              <p class="text-brand-gold text-lg">או צרו קשר ישירות:</p>
+              
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="mailto:spi.big1@gmail.com?subject=פנייה לעיצוב פנים"
+                  class="flex items-center gap-3 bg-transparent border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-teal/40 justify-center"
+                >
+                  <span>שלחו מייל</span>
+                </a>
+
+                <a
+                  href="https://wa.me/+972523327588?text=שלום שוש, אני מעוניין בשירותי עיצוב פנים"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-3 bg-transparent border-2 border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-gold/40 justify-center"
+                >
+                  <span>וואטסאפ</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
